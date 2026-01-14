@@ -50,8 +50,6 @@ Linked IN - https://www.linkedin.com/in/-jeevanyd/
 
 
 
-![Uploading WhatsApp Image 2026-01-14 at 6.50.07 PM.jpeg…]()
-
 
 
 
