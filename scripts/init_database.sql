@@ -12,7 +12,7 @@ WARNING:
     will be permanetly deleted. Proceed with caution and ensure you have proper backup before running this script.
 */
 
-use master;
+USE MASTER;
 GO
 
 -- Drpo and Recreate the 'Datawarehouse' database
