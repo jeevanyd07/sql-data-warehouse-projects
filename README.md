@@ -37,6 +37,17 @@ These insights empoer stackholders with key business metrics, enabling strategic
 ---
 
 
+## License
+
+This project is licensed under the [MIT License].(LICENSE). You are free to use, modify, and share this project with proper attribution.
+
+
+## About Me
+
+Hi there! I'm **Jeevan Y D** SQL Developer & Data Analyst
+Linked IN - https://www.linkedin.com/in/-jeevanyd/
+
+
 
 
 
