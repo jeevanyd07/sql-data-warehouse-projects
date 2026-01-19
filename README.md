@@ -42,6 +42,25 @@ These insights empoer stackholders with key business metrics, enabling strategic
 This project is licensed under the [MIT License].(LICENSE). You are free to use, modify, and share this project with proper attribution.
 
 
+**Bronze Layer**
+
+1.Analysing		          2.Coding		            3.Validation		        4.Docs & Version
+Interview Source        Data Ingestion          Data Completeness &     Data Documentation
+System Expert				    Schema Check            Versioning in GIT
+
+
+
+**Silver Layer**
+
+1.Analysing             2.Coding		            3.Validating		           4.Docs & Version
+Explore & Understand    Data Cleaning		        Data Correctness	         Data Documentation
+the Data                2.1.Check Quality	      Checks			               Versioning in GIT
+ 			                  of Bronze
+ 			                  2.2.Write Data
+ 			                  Transformations
+ 			                  2.3.Insert into
+ 			                  Silver
+
 ## About Me
 
 Hi there! I'm **Jeevan Y D** SQL Developer & Data Analyst
