@@ -12,33 +12,26 @@ WARNING:
     will be permanetly deleted. Proceed with caution and ensure you have proper backup before running this script.
 */
 
-USE MASTER;
-GO
+--Using Postgresql--
 
 -- Drpo and Recreate the 'Datawarehouse' database
-IF EXISTS (SELECT 1 FROM sys.database WHERE name = 'DataWherehouse')
-BEGIN
-    ALTER DATABASE DataWherehouse SET SINGLE_USER WITH ROLLBACK IMMEDAITE;
-    DROP DATABASE DataWherehouse;
-END;
-GO
+-- IF EXISTS (SELECT 1 FROM sys.database WHERE name = 'DataWherehouse')
+-- BEGIN
+--     ALTER DATABASE DataWherehouse SET SINGLE_USER WITH ROLLBACK IMMEDAITE;
+--     DROP DATABASE DataWherehouse;
+-- END;
 
 -- Create the 'DataWherehouse' database
 CREATE DATABASE DataWherehouse;
-GO
 
 USE DataWherehouse;
-GO
 
--- Create Schemas
+-- Create Schemas--
 CREATE SCHEMA bronze;
-GO
 
 CREATE SCHEMA silver;
-GO
 
 CREATE SCHEMA gold;
-GO
 
 
 
