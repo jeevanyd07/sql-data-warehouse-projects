@@ -1,0 +1,77 @@
+SELECT * FROM bronz."bronze.crm_cust_info"; --Table
+
+-- Check Nulls or Duplicates in Primary Key
+-- Expatation: No Result
+SELECT 
+cst_id,
+COUNT(*)
+FROM bronz."bronze.crm_cust_info"
+GROUP BY cst_id
+HAVING COUNT(*) > 1;
+
+-- Check Unwanted Spaces in first & last name, gender, m_status
+SELECT cst_material_status
+FROM bronz."bronze.crm_cust_info"
+WHERE cst_material_status != TRIM(cst_material_status);
+
+-- Data Standardization & Consitency
+SELECT DISTINCT cst_material_status
+FROM bronz."bronze.crm_cust_info";
+
+----------------------------------------------------------------------------------------
+-- After Updating tabel check the Silver table with same thing
+SELECT 
+* 
+FROM bronz."silver.crm_cust_info";
+
+-- Check Nulls or Duplicates in Primary Key
+SELECT 
+cst_id,
+COUNT(*)
+FROM bronz."silver.crm_cust_info"
+GROUP BY cst_id
+HAVING COUNT(*) > 1;
+
+-- Check Unwanted Spaces in first & last name, gender, m_status
+SELECT cst_material_status
+FROM bronz."silver.crm_cust_info"
+WHERE cst_material_status != TRIM(cst_material_status);
+
+SELECT DISTINCT cst_material_status
+FROM bronz."silver.crm_cust_info";
+
+--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+Result for this bronz."silver.crm_cust_info" Table
+
+INSERT INTO bronz."silver.crm_cust_info"(
+	cst_id,
+	cst_key,
+	cst_firstname,
+	cst_lastname,
+	cst_material_status,
+	cst_gndr,
+	cst_create_dste
+)
+SELECT 
+cst_id,
+cst_key,
+TRIM(cst_firstname),
+TRIM(cst_lastname),
+CASE
+	WHEN cst_material_status = 'M' THEN 'Married'
+	WHEN cst_material_status = 'S' THEN 'Single'
+	ELSE 'N/A'
+END cst_material_status,
+CASE
+	WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
+	WHEN UPPER(TRIM(cst_gndr)) = 'M' THEN 'Male'
+	ELSE 'N/A'
+END cst_gndr,
+cst_create_date
+FROM(
+SELECT 
+* ,
+ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) AS flag_last
+FROM bronz."bronze.crm_cust_info")T
+WHERE flag_last = 1;
