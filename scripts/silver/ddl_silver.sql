@@ -1,4 +1,4 @@
--- Creating Silver Layer Customer Information --
+-- Creating Silver (CRM) Layer Customer Information --
 TRUNCATE TABLE bronz."silver.crm_cust_info";
 INSERT INTO bronz."silver.crm_cust_info"(
 	cst_id,
@@ -32,9 +32,9 @@ ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) AS flag_la
 FROM bronz."bronze.crm_cust_info")T
 WHERE flag_last = 1;
 
--------------------------------------------------------
--------------------------------------------------------
--- Creating Silver Layer Product Information --
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+-- Creating Silver (CRM) Layer Product Information --
 SELECT * FROM bronz."silver.crm_prd_info";
 TRUNCATE TABLE bronz."silver.crm_prd_info";
 INSERT INTO bronz."silver.crm_prd_info"(
@@ -63,3 +63,51 @@ END AS prd_line,
 CAST(prd_start_dt AS DATE) AS prd_start_dt,
 CAST(LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)-1 AS DATE) AS prd_end_dt 
 FROM bronz."bronze.crm_prd_info";
+
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+
+-- Creating Silver (CRM) Layer Sales Details
+TRUNCATE TABLE bronz."silver.crm_sales_details";
+INSERT INTO bronz."silver.crm_sales_details"(
+	sls_ord_num,
+	sls_prd_key,
+	sls_cust_id,
+	sls_order_dt,
+	sls_ship_dt,
+	sls_due_dt,
+	sls_sales,
+	sls_quantity,
+	sls_price
+)
+SELECT 
+sls_ord_num,
+sls_prd_key,
+sls_cust_id,
+CASE
+	WHEN sls_order_id = 0 OR LENGTH(CAST(sls_order_id AS VARCHAR)) != 8 THEN NULL
+	ELSE CAST(CAST(sls_order_id AS VARCHAR) AS DATE)
+END AS sls_order_dt,
+CASE
+	WHEN sls_ship_dt = 0 OR LENGTH(CAST(sls_ship_dt AS VARCHAR)) != 8 THEN NULL
+	ELSE CAST(CAST(sls_ship_dt AS VARCHAR) AS DATE)
+END AS sls_order_dt,
+CASE
+	WHEN sls_due_dt = 0 OR LENGTH(CAST(sls_due_dt AS VARCHAR)) != 8 THEN NULL
+	ELSE CAST(CAST(sls_due_dt AS VARCHAR) AS DATE)
+END AS sls_due_dt,
+CASE
+	WHEN sls_sales IS NULL OR sls_sales <= 0 OR sls_sales != sls_quantity * sls_price
+	THEN sls_quantity * ABS(sls_price)
+	ELSE sls_sales
+END AS sla_sales,
+sls_quantity,
+CASE 
+	WHEN sls_price IS NULL OR sls_price <= 0 THEN sls_sales / NULLIF(sls_quantity,0)
+	ELSE sls_price
+END AS sls_price
+FROM bronz."bronze.crm_sales_details";
+
+
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
