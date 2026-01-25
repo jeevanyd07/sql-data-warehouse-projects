@@ -33,7 +33,7 @@ FROM bronz."bronze.crm_cust_info")T
 WHERE flag_last = 1;
 
 -------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------
+
 -- Creating Silver (CRM) Layer Product Information --
 SELECT * FROM bronz."silver.crm_prd_info";
 TRUNCATE TABLE bronz."silver.crm_prd_info";
@@ -64,7 +64,6 @@ CAST(prd_start_dt AS DATE) AS prd_start_dt,
 CAST(LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)-1 AS DATE) AS prd_end_dt 
 FROM bronz."bronze.crm_prd_info";
 
------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
 -- Creating Silver (CRM) Layer Sales Details
@@ -108,6 +107,86 @@ CASE
 END AS sls_price
 FROM bronz."bronze.crm_sales_details";
 
+----------------------------------------------------------------------------------------------------------------
 
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
+-- Creating Silver (ERP) Customer az12 Table
+TRUNCATE TABLE bronz."silver.erp_cust_az12";
+INSERT INTO bronz."silver.erp_cust_az12"(
+	cid,
+	bdate,
+	gen
+)
+SELECT 
+CASE 
+	WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid,4,LENGTH(cid))
+	ELSE cid
+END AS cid,
+CASE
+	WHEN bdate > NOW() THEN NULL
+	ELSE bdate
+END AS bdate,
+CASE 
+	WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
+	WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
+END AS gen
+FROM bronz."bronze.erp_cust_az12";
+
+--------------------------------------------------------------------------------------------------------------
+
+-- Creating Silver (ERP) Customer az12 Table
+TRUNCATE TABLE bronz."silver.erp_cust_az12";
+INSERT INTO bronz."silver.erp_cust_az12"(
+	cid,
+	bdate,
+	gen
+)
+SELECT 
+CASE 
+	WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid,4,LENGTH(cid))
+	ELSE cid
+END AS cid,
+CASE
+	WHEN bdate > NOW() THEN NULL
+	ELSE bdate
+END AS bdate,
+CASE 
+	WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
+	WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
+END AS gen
+FROM bronz."bronze.erp_cust_az12";
+
+----------------------------------------------------------------------------------------------------------
+
+-- Creating Silver (ERP) Location a101 Table
+TRUNCATE TABLE bronz."silver.erp_loc_a101";
+INSERT INTO bronz."silver.erp_loc_a101"(
+	cid,
+	cntry
+)
+SELECT
+REPLACE(cid,'-','')cid,
+CASE
+	WHEN TRIM(cntry) = 'DE' THEN 'Germany'
+	WHEN TRIM(cntry) IN ('US','USA') THEN 'United States'
+	WHEN TRIM(cntry) = ' ' OR cntry IS NULL THEN 'N/A'
+	ELSE TRIM(cntry)
+END AS cntry
+FROM bronz."bronze.erp_loc_a101";
+
+--------------------------------------------------------------------------------------
+
+-- Creating Silver (ERP) Catalouge Table
+TRUNCATE TABLE bronz."silver.erp_px_cat_g1v2";
+INSERT INTO bronz."silver.erp_px_cat_g1v2"(
+	id,
+	cat,
+	subcat,
+	maintenance
+)
+SELECT
+id,
+cat,
+subcat,
+maintenance
+FROM bronz."bronze.erp_px_cat_g1v2";
+
