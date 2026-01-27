@@ -24,19 +24,19 @@ Develop a modren data warehouse using SQL Server to consolidate sales data, anal
 
 ### 🧱 Project Overview
 This project involves:
-  1.**Data Architecture**: Designing a Modren Data Warehouse Using Architucture **Bronze,Silver,and Gold**
+  1\.**Data Architecture**: Designing a Modren Data Warehouse Using Architucture **Bronze,Silver,and Gold**
     Layer.
-  2.**ETL Pipeline**: Extracting transforming and loading data from source systems into the warehouse.
-  3.**Data Modeling**: Developing fact and dimension tables opyimized for analytical queries.
-  4.**Analytics & Reporting**: Creating SQL-based reports and dashboards for actions insights.
+  2\.**ETL Pipeline**: Extracting transforming and loading data from source systems into the warehouse.
+  3\.**Data Modeling**: Developing fact and dimension tables opyimized for analytical queries.
+  4\.**Analytics & Reporting**: Creating SQL-based reports and dashboards for actions insights.
 
  🎯This project showcases expertise.
--  * SQL Development
--  * Data Architect
--  * Data Engineering
--  * ETL Pipeling Developer
--  * Data Modeling
--  * Data Analytics
+-   SQL Development
+-   Data Architect
+-   Data Engineering
+-   ETL Pipeling Developer
+-   Data Modeling
+-   Data Analytics
 
 
 ---
