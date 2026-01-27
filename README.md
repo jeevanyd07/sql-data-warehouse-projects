@@ -38,15 +38,18 @@ This project involves:
 -   Data Modeling
 -   Data Analytics
 
-
 ---
 
+# Data Architecture
+<img width="848" height="501" alt="Draw Architecture" src="https://github.com/user-attachments/assets/895e27f4-e635-49d6-a2be-4799ec35def2" />
+1. 
+---
 
 ## License
 
 This project is licensed under the [MIT License].(LICENSE). You are free to use, modify, and share this project with proper attribution.
 
-
+---
 
 ## About Me
 
