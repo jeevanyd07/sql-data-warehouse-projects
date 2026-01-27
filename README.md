@@ -6,7 +6,7 @@ highlights industry best practies in data engineering and analytics.
 
 ---
 
-## Project Requirments
+## 🧱 ## Project Requirments
 
 ### Building tha Data Wareshouse (Data Engineering)
 
@@ -22,17 +22,15 @@ Develop a modren data warehouse using SQL Server to consolidate sales data, anal
 
 ---
 
-### BI : Analytics & Reporting (Data Analytics)
+### Project Overview
+This project involves:
+  1.**Data Architecture**: Designing a Modren Data Warehouse Using Architucture **Bronze,Silver,and Gold**
+    Layer.
+  2.**ETL Pipeline**: Extracting transforming and loading data from source systems into the warehouse.
+  3.**Data Modeling**: Developing fact and dimension tables opyimized for analytical queries.
+  4.**Analytics & Reporting**: Creating SQL-based reports and dashboards for actions insights.
 
-
-#### Objective
-Develop SQL-based analytics to deliver detailed insights into:
-- **Customer Behavior**
-- **Product performance**
-- **sales Treands**
-
-These insights empoer stackholders with key business metrics, enabling strategic decision-making.
-
+  
 
 ---
 
