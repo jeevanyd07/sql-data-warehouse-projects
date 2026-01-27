@@ -1,3 +1,19 @@
+/*
+===================================================================================================
+DDL Scripts: Creates Gold View
+===================================================================================================
+Scripts Purpose:
+		This scripts creates view for the gold layer in the date warehouse.
+		The Gold layer represnts the final and fast tables (Star Schema)
+
+		Eash view performes Transformation and combines data from Silver Layer
+		to produce a clean, enriched, and busines-ready datasets.
+
+Usage:
+	- This view can be quaried directly for analyics and reporting.
+===================================================================================================
+*/
+
 -- Creating Gold Layer for Customer -- 
 CREATE VIEW gold.dim_customers AS
 SELECT 
