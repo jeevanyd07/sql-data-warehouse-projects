@@ -1,12 +1,12 @@
 # Data Warehouse and Analytics Project
 
-Welcome to the **Data Warehouse and Analytics Project** repository!
+Welcome to the **Data Warehouse and Analytics Project** repository! 🚀
 This project demonstrates a comprehensive data warehousing and analytics solution, from building a data ware house to generating actionable insights.Designed as protfolio project
 highlights industry best practies in data engineering and analytics.
 
 ---
 
-## 🧱 ## Project Requirments
+## 📋 Project Requirments
 
 ### Building tha Data Wareshouse (Data Engineering)
 
@@ -22,7 +22,7 @@ Develop a modren data warehouse using SQL Server to consolidate sales data, anal
 
 ---
 
-### Project Overview
+### 🧱 Project Overview
 This project involves:
   1.**Data Architecture**: Designing a Modren Data Warehouse Using Architucture **Bronze,Silver,and Gold**
     Layer.
