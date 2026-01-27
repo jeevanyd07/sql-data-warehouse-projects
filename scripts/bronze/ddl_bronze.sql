@@ -19,5 +19,8 @@ Script Purpose:
 -- Create Table bronz."bronze.erp_cust_az12"
 -- Create Table bronz."bronze.erp_loc_a101"
 -- Create Table bronz."bronze.erp_px_cat_g1v2"
-
-
+/*
+==================================================================================================================
+-- And Insert All *RAW* Values into into the bronze table form date set
+==================================================================================================================
+*/
