@@ -41,7 +41,7 @@ FROM bronz."silver.crm_cust_info"
 WHERE cst_gndr NOT IN ('Male', 'Female', 'N/A');
 
 -- 2️⃣ Silver CRM Product Info – Quality Checks
-✅ Null & Default Cost Validation
+-- ✅ Null & Default Cost Validation
 SELECT *
 FROM bronz."silver.crm_prd_info"
 WHERE prd_cost < 0;
