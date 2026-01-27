@@ -116,6 +116,16 @@ data-warehouse-project/
 ## 🔗 Project Links
 Notion:- https://www.notion.so/Data-WareHouse-Project-Customer-Sales-Data-2efb2b602d1b80c9a035daef6cdccbba
 
+- Design Data Architecture
+
+- Project Initialization
+
+- Build Bronze Layer
+
+- Build Silver Layer
+
+- Build Gold Layer
+
 ---
 
 ## ⚖️ License
