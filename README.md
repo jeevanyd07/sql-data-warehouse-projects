@@ -64,6 +64,7 @@ This data Architecture for this project follows Medallion Architecture **Bronze*
 The repository is organized by data layers (Bronze, Silver, Gold) 
 to reflect a scalable and maintainable data warehouse architecture.
 
+```text
 data-warehouse-project/
 │
 ├── datasets/
