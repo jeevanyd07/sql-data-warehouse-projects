@@ -4,7 +4,9 @@ Welcome to the **Data Warehouse and Analytics Project** repository! 🚀
 This project demonstrates a comprehensive data warehousing and analytics solution, from building a data ware house to generating actionable insights.Designed as protfolio project
 highlights industry best practies in data engineering and analytics.
 
+
 ---
+
 
 ## 📋 Project Requirments
 
@@ -20,7 +22,9 @@ Develop a modren data warehouse using SQL Server to consolidate sales data, anal
 - **Scope** : Focus on the latest only historization of data is not required.
 - **Documentation** : Provide cler documentation of the data model to support both business stakeholders and analytics teams.
 
+
 ---
+
 
 ### 🧱 Project Overview
 This project involves:
@@ -38,20 +42,41 @@ This project involves:
 -   Data Modeling
 -   Data Analytics
 
+
 ---
 
-# Data Architecture
+
+# 🏗️ Data Architecture
+
+This data Architecture for this project follows Medallion Architecture **Bronze**,**Silver**,and **Gold** Layers
+
 <img width="848" height="501" alt="Draw Architecture" src="https://github.com/user-attachments/assets/895e27f4-e635-49d6-a2be-4799ec35def2" />
-1. 
+
+1. **Bronze Layer**: Stores raw data as-in from source systems. Data in ingested from CSV files into SQL Server Database.
+2. **Silver Layer**: This Layer includes data cleansing, standarzation and normalization processes to data for analysis.
+3. **Gold Layer**: Houses business-ready data modeled into a star schema required for reporting and analytics.
+
+
 ---
 
-## License
+
+## 📁 Repository Structure
+The repository is organized by data layers (Bronze, Silver, Gold) 
+to reflect a scalable and maintainable data warehouse architecture.
+
+
+---
+
+
+## ⚖️ License
 
 This project is licensed under the [MIT License].(LICENSE). You are free to use, modify, and share this project with proper attribution.
 
+
 ---
 
-## About Me
+
+## 👨‍💻 About Me
 
 Hi there! I'm **Jeevan Y D** SQL Developer & Data Analyst
 Linked IN - https://www.linkedin.com/in/-jeevanyd/
