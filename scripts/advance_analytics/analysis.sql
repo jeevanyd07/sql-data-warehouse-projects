@@ -15,7 +15,6 @@ GROUP BY order_year, order_month
 ORDER BY order_year, order_month;
 
 
-
 -- =============================================================================================================================
 -- Cumulative Analysis: Calculate the total sales per month and the running total of sales over time
 -- ==============================================================================================================================
