@@ -39,6 +39,57 @@ ORDER BY order_year_month
 ) t
 
 
+-- ===========================================================================================================================================================================
+-- Performance Analysis : Analyze the yearly performance of products by comparing there sales to both the average sales performance of the product and previous years's sales
+-- ===========================================================================================================================================================================
+
+WITH yearly_product_sales AS (
+SELECT 
+EXTRACT(YEAR FROM f.order_date) AS order_year,
+p.product_nam,
+SUM(f.sales_amount) AS current_sale
+FROM gold.fact_sales f LEFT JOIN gold.dim_products p
+ON f.product_key = p.product_key
+WHERE f.order_date IS NOT NULL
+group by order_year, p.product_nam
+)
+SELECT
+order_year,
+product_nam,
+current_sale,
+ROUND(AVG(current_sale) OVER (PARTITION BY product_nam)) AS age_sale,
+current_sale - ROUND(AVG(current_sale) OVER (PARTITION BY product_nam)) AS diff_avg,
+CASE 
+	WHEN current_sale - ROUND(AVG(current_sale) OVER (PARTITION BY product_nam)) > 0 THEN 'Above Avg'
+	WHEN current_sale - ROUND(AVG(current_sale) OVER (PARTITION BY product_nam)) <0 THEN 'Bealow Avg'
+	ELSE 'Avg'
+END avg_change,
+-- Year Over Year Comparing --
+LAG(current_sale) OVER (PARTITION BY product_nam ORDER BY order_year) AS pr_year_sale,
+current_sale - LAG(current_sale) OVER (PARTITION BY product_nam ORDER BY order_year) AS diff_py,
+CASE 
+	WHEN current_sale - LAG(current_sale) OVER (PARTITION BY product_nam ORDER BY order_year) > 0 THEN 'Increase'
+	WHEN current_sale - LAG(current_sale) OVER (PARTITION BY product_nam ORDER BY order_year) <0 THEN 'Decrease'
+	ELSE 'No Change'
+END py_chaange
+FROM yearly_product_sales
+ORDER BY product_nam, order_year;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
