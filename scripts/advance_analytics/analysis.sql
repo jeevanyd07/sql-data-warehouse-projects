@@ -1,6 +1,6 @@
 
 -- ===========================================================================================================================
--- Chaange-Over-Time (TRENDS)
+-- Chaange-Over-Time (TRENDS): Analyze how a measure evolves over time.
 -- ===========================================================================================================================
 
 SELECT 
@@ -39,9 +39,10 @@ ORDER BY order_year_month
 ) t
 
 
--- ===========================================================================================================================================================================
--- Performance Analysis : Analyze the yearly performance of products by comparing there sales to both the average sales performance of the product and previous years's sales
--- ===========================================================================================================================================================================
+-- ====================================================================================================================================
+-- Performance Analysis : Analyze the yearly performance of products by comparing there sales to both the average sales performance of 
+--	                      the product and previous years's sales
+-- ====================================================================================================================================
 
 WITH yearly_product_sales AS (
 SELECT 
@@ -77,9 +78,10 @@ ORDER BY product_nam, order_year;
 
 
 
--- =================================================================================================================================================================
--- Part to Whole: Analyze how an individual partis perfpremd compared to tha overall allowing us to understand which category has the gratest impact on the business.
--- =================================================================================================================================================================
+-- ============================================================================================================================
+-- Part to Whole: Analyze how an individual partis perfpremd compared to tha overall allowing us to understand which category
+--				  has the gratest impact on the business.
+-- ============================================================================================================================
 
 WITH category_sales AS(
 SELECT
@@ -100,9 +102,11 @@ ORDER BY total_sales DESC;
 
 
 -- =============================================================================================================================
--- Data Segmentation: 
+-- Data Segmentation: Group the data based on a specific range. Helps understand the correlation between two measures.
 -- ==============================================================================================================================
+
 --Segment products into cost ranges and count how meny fall into each segment:
+
 WITH product_segments AS(
 SELECT
 product_key,
