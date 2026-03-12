@@ -138,18 +138,18 @@ WITH customer_spending AS(
 SELECT 
 c.customer_key,
 SUM(f.sales_amount) AS total_spending,
-order_date,
+f.order_date,
 MIN(order_date) AS first_order,
 MAX(order_date) AS last_order,
-DATEDIFF(month, MIN(order_date), MAX(order_date)) AS lifespan
+DATE_PART('month', AGE(MAX(order_date), MIN(order_date))) AS lifespan
 FROM gold.fact_sales f
-LEFT JOIN gold.dim_customer c
+LEFT JOIN gold.dim_customers c
 ON f.customer_key = c.customer_key
-GROUP BY c.customer_key
+GROUP BY c.customer_key, f.order_date
 )
 SELECT
 customer_segment,
-COUNT(costomer_key) AS total_customers
+COUNT(customer_key) AS total_customers
 FROM(
 	SELECT 
 	customer_key,
@@ -161,12 +161,5 @@ FROM(
 	FROM customer_spending) t
 GROUP BY customer_segment
 ORDER BY total_customers DESC;
-
-
-
-
-
-
-
 
 
