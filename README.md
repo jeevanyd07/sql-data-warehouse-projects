@@ -65,49 +65,49 @@ The repository is organized by data layers (Bronze, Silver, Gold)
 to reflect a scalable and maintainable data warehouse architecture.
 
 ```text
-data-warehouse-project/
+Data-Warehouse-Project
 │
-├── datasets/
-│   ├── source_crm/
+├── datasets
+│   ├── source_crm
 │   │   ├── cust_info.csv
 │   │   ├── prd_info.csv
 │   │   └── sales_details.csv
 │   │
-│   ├── source_erp/
-│   │   ├── cust_az12.csv
-│   │   ├── loc_a101.csv
-│   │   └── px_cat_g1v2.csv
-│   │
-│   └── placeholder/
+│   └── source_erp
+│       ├── cust_az12.csv
+│       ├── loc_a101.csv
+│       └── px_cat_g1v2.csv
 │
-├── docs/
+├── docs
 │   ├── data_architecture.md
 │   ├── data_catalogue.md
 │   ├── data_flow_diagram.md
-│   ├── integration_model.md
-│   └── placeholder/
+│   └── integration_model.md
 │
-├── scripts/
-│   ├── init_database.sql
+├── scripts
+│   ├── advance_analytics
+│   │   ├── customer_report
+│   │   ├── product_report
+│   │   └── analysis.sql
 │   │
-│   ├── bronze/
+│   ├── bronze
 │   │   └── ddl_bronze.sql
 │   │
-│   ├── silver/
+│   ├── silver
 │   │   ├── ddl_silver.sql
 │   │   ├── proc_load_silver.sql
 │   │   └── quality_check_silver.sql
 │   │
-│   ├── gold/
+│   ├── gold
 │   │   ├── ddl_gold.sql
 │   │   └── quality_check_gold.sql
 │   │
-│   └── placeholder/
+│   └── init_database.sql
 │
-├── tests/
-│   └── placeholder/
+├── tests
 │
 ├── LICENSE
+│
 └── README.md
 ```
 
